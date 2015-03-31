@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+<html ng-app='CrowdRabbit'>
+<head>
+<title>
+Search Crowdfunding Projects | CrowdRabbit
+
+</title>
+<!-- Meta -->
+<meta charset='utf-8'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"0ada1c8369","applicationID":"6502857","transactionName":"IVdfEEIJCQ9dR0pGUwNKUgwfDwsHXU0=","queueTime":0,"applicationTime":39,"agent":"js-agent.newrelic.com/nr-632.min.js"}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o?o:n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({QJf3ax:[function(e,n){function t(e){function n(n,t,a){e&&e(n,t,a),a||(a={});for(var u=c(n),f=u.length,s=i(a,o,r),p=0;f>p;p++)u[p].apply(s,t);return s}function a(e,n){f[e]=c(e).concat(n)}function c(e){return f[e]||[]}function u(){return t(n)}var f={};return{on:a,emit:n,create:u,listeners:c,_events:f}}function r(){return{}}var o="nr@context",i=e("gos");n.exports=t()},{gos:"7eSDFh"}],ee:[function(e,n){n.exports=e("QJf3ax")},{}],3:[function(e,n){function t(e){return function(){r(e,[(new Date).getTime()].concat(i(arguments)))}}var r=e("handle"),o=e(1),i=e(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(e,n){window.NREUM[n]=t("api-"+n)}),n.exports=window.NREUM},{1:12,2:13,handle:"D5DuLP"}],"7eSDFh":[function(e,n){function t(e,n,t){if(r.call(e,n))return e[n];var o=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return e[n]=o,o}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],gos:[function(e,n){n.exports=e("7eSDFh")},{}],handle:[function(e,n){n.exports=e("D5DuLP")},{}],D5DuLP:[function(e,n){function t(e,n,t){return r.listeners(e).length?r.emit(e,n,t):(o[e]||(o[e]=[]),void o[e].push(n))}var r=e("ee").create(),o={};n.exports=t,t.ee=r,r.q=o},{ee:"QJf3ax"}],id:[function(e,n){n.exports=e("XL7HBI")},{}],XL7HBI:[function(e,n){function t(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:i(e,o,function(){return r++})}var r=1,o="nr@id",i=e("gos");n.exports=t},{gos:"7eSDFh"}],G9z0Bl:[function(e,n){function t(){var e=d.info=NREUM.info,n=f.getElementsByTagName("script")[0];if(e&&e.licenseKey&&e.applicationID&&n){c(p,function(n,t){n in e||(e[n]=t)});var t="https"===s.split(":")[0]||e.sslForHttp;d.proto=t?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=d.proto+e.agent,n.parentNode.insertBefore(r,n)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=e("handle"),c=e(1),u=(e(2),window),f=u.document,s=(""+location).split("?")[0],p={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-632.min.js"},d=n.exports={offset:i(),origin:s,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),u.addEventListener("load",t,!1)):(f.attachEvent("onreadystatechange",r),u.attachEvent("onload",t)),a("mark",["firstbyte",i()])},{1:12,2:3,handle:"D5DuLP"}],loader:[function(e,n){n.exports=e("G9z0Bl")},{}],12:[function(e,n){function t(e,n){var t=[],o="",i=0;for(o in e)r.call(e,o)&&(t[i]=n(o,e[o]),i+=1);return t}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],13:[function(e,n){function t(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(0>o?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=t},{}]},{},["G9z0Bl"]);</script>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<link href="//crowdrabbit-assets.s3.amazonaws.com/assets/cr_favicon-b7d8856ddc8fe4440e8f290689ae49fe.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<!-- Stylesheets -->
+<link data-turbolinks-track="false" href="//crowdrabbit-assets.s3.amazonaws.com/assets/application-723b0b772b527411d957c632801a68e0.css" media="all" rel="stylesheet" />
+<!-- Javascript -->
+<script data-turbolinks-track="false" src="//crowdrabbit-assets.s3.amazonaws.com/assets/application-cf3fabef37276e618c7c23603bf7b9e4.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'></script>
+<script src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'></script>
+<script src='//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js'></script>
+<script src='//html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js'></script>
+<link href="//crowdrabbit-assets.s3.amazonaws.com/assets/ie-cf4fa1d1c869f46cc8fcd90e0c3e76af.css" media="all" rel="stylesheet" />
+<script>
+  document.createElement('slider');
+</script>
+<![endif]-->
+<!-- CSRF protection -->
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="duydT4yq1Y7l03t3R3eWoW2qac2pFjeg6kuzMpTeXHU=" name="csrf-token" />
+<!-- Yield content head -->
+<meta content='Search our listings of rewards, donation, equity, convertible debt and royalty crowdfunding projects.' name='description'>
+<meta content='Crowdfunding, search crowdfunding projects, Crowdfunding listings, Crowdfunding database, Crowdfunding sites, Crowdfunding search tool, Best crowdfunding site, find crowdfunding projects' name='keywords'>
+<!-- Facebook Open Graph tags -->
+<meta content='article' property='og:type'>
+<meta content='Search CrowdRabbit' property='og:title'>
+<meta content='CrowdRabbit' property='og:site_name'>
+<meta content='https://www.crowdrabbit.com/search' property='og:url'>
+<meta content="No matter what type of crowdfunding project you're looking for, we help you find it." property='og:description'>
+<meta content='//crowdrabbit-assets.s3.amazonaws.com/assets/crowdrabbit_opengraph_logo-3b731b33a46ed4f7e21d254da016451c.jpg' property='og:image'>
+<!-- Canonical URLs -->
+<link href='https://www.crowdrabbit.com/search' rel='canonical'>
+
+</head>
+<body>
+<!-- Google tag manager -->
+<noscript>
+<iframe height='0' src='//www.googletagmanager.com/ns.html?id=GTM-KNQXF3' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KNQXF3');
+  // Remove alerts automatically
+  setTimeout(function(){ $('.cr-alert').fadeOut(897) }, 2000);
+</script>
+<!-- Navbar -->
+<div class='fixed contain-to-grid navbar-default'>
+<nav class='top-bar nav wide' data-topbar role='navigation'>
+<!-- Left Nav Section -->
+<ul class='title-area'>
+<li class='name navbar-brand'>
+<a href="https://www.crowdrabbit.com/"><img alt="Crowdrabbit" src="//crowdrabbit-assets.s3.amazonaws.com/assets/logo-onwhite-ae7919d53e3028031fa58d8368234a48.png" />
+</a></li>
+<li class='toggle-topbar menu-icon'>
+<a class='fa fa-navicon text-warning' href='#' style='color: #222;'></a>
+</li>
+</ul>
+<section class='top-bar-section'>
+<!-- Right Nav Section -->
+<ul class='right nav navbar-nav'>
+<li>
+<a href="/explore">Explore</a>
+</li>
+<li>
+<a href="/search">Search</a>
+</li>
+<li class='has-dropdown not-click'>
+<a href="/resources">Resources
+<span class='fa fa-angle-down'></span>
+</a><ul class='dropdown'>
+<li>
+<a href="/resources/blog">Blog</a>
+</li>
+<li>
+<a href="/resources/crowdfunding-101">Crowdfunding 101</a>
+</li>
+<li>
+<a href="/resources/investors">Investors</a>
+</li>
+<li>
+<a href="/resources/raising-capital">Capital Seekers</a>
+</li>
+<li>
+<a href="/resources/running-your-own-crowdfunding-platform">Platforms</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/users/sign_up">Register</a>
+</li>
+<li class='login'>
+<a href="/users/sign_in?redirect_to=%2Fsearch">Log In</a>
+</li>
+</ul>
+</section>
+</nav>
+</div>
+
+<!-- Yield content -->
+<script>
+  var paramSearch = "";
+  var paramType = "";
+  var paramAdvanced = "";
+  var saveDialog = true;
+  
+  var backersHigh = 215637
+  var investmentHigh = 39881
+</script>
+<div ng-controller='SearchController'>
+<div class='loading-modal' ng-show='loadingModal'>
+<div class='fa fa-refresh fa-spin'></div>
+</div>
+<div class='alert-container' ng-show='alerts.length &gt; 0'>
+<div class='alert-box cr-alert {{alert.type}}' ng-repeat='alert in alerts'>
+{{ alert.message }}
+</div>
+</div>
+<div class='bg-blue top-row' id='easy-search'>
+<div class='container'>
+<div class='row wide'>
+<form>
+<div class='medium-6 large-4 column'>
+<label for='searchInput' style='color: white;'>SEARCH FOR PROJECTS</label>
+</div>
+<div class='medium-6 large-8 column'>
+<input class='form-control input-lg large' id='searchInput' ng-model='filters.searchPhrase' placeholder='Search' type='text'>
+<button class='button btn-lg btn-warning btn-block btn' ng-click='resetState();search()'>
+<div class='fa fa-search'></div>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div id='breadcrumb'>
+<div class='container row wide'>
+<ul class='inline-list'>
+<li>
+<a href="/">Home</a>
+</li>
+<li>
+<a href="/search">Search</a>
+</li>
+<li class='last'>
+{{sortFields[filters.sort]}}
+</li>
+</ul>
+</div>
+</div>
+<section id='main-content'>
+<div class='container'>
+<div class='row wide'>
+<div class='medium-3 small-12 column'>
+<h4 class='no-top-margin'>Refine your search</h4>
+<div id='side-search'>
+<div class='saved-filters search-group' ng-show='savedFilters.length &gt; 0'>
+<h4>SAVED FILTERS</h4>
+<div class='options'>
+<select class='form-control input-xlarge' ng-change='setSavedFilter()' ng-model='filters.selectedFilter' ng-options='f.id as f.name for f in savedFilters'>
+<option disabled value=''>
+Select One
+</option>
+</select>
+</div>
+</div>
+<div class='search-type search-group'>
+<h4>CROWDFUNDING TYPE</h4>
+<div class='options'>
+<div ng-repeat='t in options.types'>
+<input checklist-model='filters.types' checklist-value='t.key' id="{{t.key + '-checkbox'}}" type='checkbox'>
+<label for="{{t.key + '-checkbox'}}">{{t.key}} ({{t.doc_count}})</label>
+</div>
+</div>
+</div>
+<div class='search-category search-group'>
+<h4>CATEGORY</h4>
+<div class='options'>
+<div ng-repeat='t in options.categories'>
+<input checklist-model='filters.categories' checklist-value='t.key' id="{{t.key + '-checkbox'}}" type='checkbox'>
+<label tooltip-append-to-body tooltip-placement='right' tooltip="{{ (t.key.length + t.doc_count.toString().length) &gt; 10 ? t.key : '' }}">
+{{t.key | limitTo: (10 - t.doc_count.toString().length)}}
+{{t.key.length + t.doc_count.toString().length > 10 ? '...' : ''}}
+({{t.doc_count}})
+</label>
+</div>
+</div>
+</div>
+<div class='search-location search-group'>
+<h4>LOCATION</h4>
+<div class='options'>
+<div ng-repeat='t in options.locations'>
+<input checklist-model='filters.locations' checklist-value='t.key' id="{{t.key + '-checkbox'}}" type='checkbox'>
+<label>{{t.key | uppercase}} ({{t.doc_count}})</label>
+</div>
+</div>
+</div>
+<div class='search-advanced search-group'>
+<h4 class='text-warning'>
+<a class='advanced-toggle' ng-click='toggleAdvancedFilters()'>
+<div class='fa fa-cogs'>
+Advanced Search
+</div>
+</a>
+</h4>
+<div class='options' ng-show='filters.advancedSearch'>
+<div class='advanced-search-status search-sub-group'>
+<h5>Status</h5>
+<div class='row'>
+<div class='small-12 column'>
+<input id='activeStatusCheckbox' ng-model='filters.active' type='checkbox'>
+<label for='activeStatusCheckbox'>Active Projects Only</label>
+</div>
+</div>
+</div>
+<div class='backers search-sub-group'>
+<h5>Number of Backers</h5>
+<div class='row'>
+<div class='medium-12 column'>
+<slider floor="0" ceiling="215637" step="1" range="true" ng-model-low="filters.backers.low" ng-model-high="filters.backers.high" value="[0,1000]" slider-id="backers"></slider>
+<div class='row'>
+<div class='medium-3 column'>
+{{ filters.backers.low }}
+</div>
+<div class='medium-3 medium-offset-6 column'>
+{{ filters.backers.high }}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='ending-date search-sub-group'>
+<h5>Ending Date is Between</h5>
+<div class='row'>
+<div class='small-10 column'>
+<div class='form-group'>
+<input class='fdatepicker' ng-model='filters.start_date' type='text'>
+</div>
+</div>
+</div>
+<div class='row'>
+<div class='small-10 column'>
+<div class='form-group'>
+<input class='fdatepicker' ng-model='filters.end_date' type='text'>
+</div>
+</div>
+</div>
+</div>
+<div class='minimum-investment search-sub-group'>
+<h5>Minimum Investment</h5>
+<div class='row'>
+<div class='small-5 column first'>
+<input id='minInvestment' ng-model='filters.minimumInvestment.low' placeholder='Min' type='text'>
+</div>
+<div class='small-2 column'>
+<p class='text-center'>to</p>
+</div>
+<div class='small-5 column last'>
+<input id='maxInvestment' ng-model='filters.minimumInvestment.high' placeholder='Max' type='text'>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='search-buttons search-group'>
+<div class='row text-center'>
+<div class='small-12 column'>
+<button class='btn button tiny warning btn-warning' ng-click='resetState();search()'>
+<div class='fa fa-search'></div>
+Search
+</button>
+<button class='btn button tiny info btn-info' ng-click='resetFilters()'>
+<div class='fa fa-refresh'></div>
+Reset
+</button>
+</div>
+</div>
+<div class='row'>
+<hr>
+</div>
+<div class='row'>
+<div class='small-12 text-center'>
+<button class='btn button success small btn-success' ng-click='openModal(false)'>
+<div class='fa fa-save'></div>
+Save Search
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='medium-9 small-12 column'>
+<div class='sort-filter'>
+<ul class='inline-list'>
+<li>Sort by:</li>
+<li ng-class="filters.sort == $index? 'active' : ''" ng-click='sort($index)' ng-repeat='sf in sortFields'>
+<a href='#' ng-click="resetScrollY('search')">
+{{sf.toUpperCase()}}
+</a>
+</li>
+</ul>
+</div>
+<div class='search-count'>
+<div class='fa-stack'>
+<div class='fa text-warning fa-circle fa-stack-2x'></div>
+<div class='fa fa-exclamation fa-stack-1x fa-inverse'></div>
+</div>
+{{searchInfo}}
+</div>
+<div class='ul small-block-grid-1 medium-block-grid-3'>
+<li ng-repeat='project in projects'>
+<div class='project'>
+<a href="/projects/0" ng-href="projects/{{project.slug}}"><img alt="{{project.name}}" class="img-responsive" ng-src="{{project.image_url == &quot;&quot; ? &quot;&quot; : project.image_url | noProtocol}}" scroll-on-load="search" src="//crowdrabbit-assets.s3.amazonaws.com/assets/crowdrabbit_opengraph_logo-3b731b33a46ed4f7e21d254da016451c.jpg" /></a>
+<div class='project-details'>
+<div class='project-details-top' style='min-height: 90px;'>
+<a ng-href='projects/{{project.slug}}'>
+<div class='project-name' title='{{project.name}}'>
+{{project.name | limitTo: 38 }}{{project.name.length > 38? '...' : ''}}
+</div>
+</a>
+<div class='project-category'>
+{{ project.category | limitTo: 25 }}{{ project.category.length > 25 ? "..." : "" }}
+</div>
+</div>
+<div class='project-details-bottom'>
+<div class='excerpt' style='min-height: 90px;' title='{{project.description}}'>
+{{project.description | limitTo: 100 }}{{project.description.length > 100? "..." : ""}}
+</div>
+<div class='row'>
+<div class='small-5 column'>
+<div class='stat'>
+{{project.currency_symbol}}{{project.minimum_investment | humanize}}
+</div>
+<div class='detail'>
+Minimum  Investment
+</div>
+</div>
+<div class='small-7 column'>
+<div class='stat'>
+{{ project.end_date | customDate}}
+</div>
+<div class='detail'>
+End Date
+</div>
+</div>
+</div>
+<div class='row'>
+<div class='small-6 column project-funded'>
+<input class='knob animated' data-amountPledged='{{ project.amount_pledged == null }}' data-fund-pct='{{ project.percent_raised*100}}' value='0'>
+</div>
+<div class='small-6 column'>
+<div class='stat'>
+{{project.currency_symbol}}{{project.target_raise | humanize}}
+</div>
+<div class='detail'>
+Target
+</div>
+<div class='stat' ng-hide='project.amount_pledged == null'>
+{{project.currency_symbol}}{{project.amount_pledged | humanize}}
+</div>
+<div class='stat' ng-show='project.amount_pledged == null'>
+N/A
+</div>
+<div class='detail'>
+Raised
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+</div>
+<div class='row wide'>
+<div class='medium-4 medium-centered column'>
+<div class='button warning btn-warning' ng-click='search()' ng-hide='loading || noMore || projects.length &lt; 12'>
+Load More
+</div>
+<div class='button warning' ng-show='loading'>
+Loading...
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div ng-show='loginPromptModal' style='position: fixed; top: 0; left: 0; height: 100%; width: 100%; background: rgba(168, 168, 168, 0.8); z-index: 10000;'>
+<div style='position: fixed; top: 23%; left: 33%; width: 33%; z-index: 10000000; background: white; padding: 2em;'>
+<form accept-charset="UTF-8" action="/users/sign_in" method="post"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="duydT4yq1Y7l03t3R3eWoW2qac2pFjeg6kuzMpTeXHU=" /></div>
+<div class='modal-header'>
+<h3 class='modal-title'>Login Required</h3>
+</div>
+<hr>
+<div class='row' ng-hide='showLogin'>
+<div class='form-group'>
+<input id="user_email" name="user[email]" type="text" />
+</div>
+<div class='form-group'>
+<input id="user_password" name="user[password]" type="password" />
+</div>
+<div class='form-group'>
+<input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" />
+<label for="user_remember_me">Remember me</label>
+</div>
+</div>
+<input id="redirect_to" name="redirect_to" type="hidden" value="/search" />
+<div class='row text-center'>
+<p>Log in using</p>
+<a href="/users/auth/google_oauth2"><img alt="Googleplus" src="//crowdrabbit-assets.s3.amazonaws.com/assets/googleplus-4f5a91f623fa90458cb9468bd090e354.png" /></a>
+<a href="/users/auth/google_oauth2"><img alt="Facebook" src="//crowdrabbit-assets.s3.amazonaws.com/assets/facebook-d39d2d00b5c3c34ab5d0e837162f5844.png" /></a>
+<a href="/users/auth/linkedin"><img alt="Linkedin" src="//crowdrabbit-assets.s3.amazonaws.com/assets/linkedin-1bf91998d343af9dfa8540cc8cdce04e.png" /></a>
+</div>
+<div class='row'>
+<div class='column'>
+<a href="/users/password/new">Forgot password?</a>
+</div>
+</div>
+<hr>
+<div class='row'>
+<div class='small-4 column'>
+<a class="button small success btn-success" href="/users/sign_up">Sign up</a>
+</div>
+<div class='small-8 column text-right'>
+<a class="button small info btn-info" href="#" ng-click="loginPromptModal=false">Cancel</a>
+<button class='small warning btn-warning' type='submit'>Login</button>
+</div>
+</div>
+</form>
+
+</div>
+</div>
+</div>
+<script>
+  $('.project-funded').hide();
+  $('.fdatepicker').fdatepicker({weekStart: 1, format: 'mm/dd/yyyy', autoClose: true, todayHighlight: true});
+</script>
+
+<!-- Footer -->
+<footer>
+<div class='container' style='padding-top: 1em;'>
+<div class='row'>
+<div class='medium-4 column'>
+<div class='copyright'>
+Copyright &copy; CrowdRabbit 2015
+</div>
+</div>
+<div class='medium-4 column'>
+<ul class='inline-list list-inline social-buttons text-center'>
+<li>
+<a href='https://twitter.com/crowdrabbit' target='new'>
+<div class='fa fa-twitter' style='line-height: 40px;'></div>
+</a>
+</li>
+<li>
+<a href='https://www.facebook.com/crowdrabbit' target='new'>
+<div class='fa fa-facebook' style='line-height: 40px;'></div>
+</a>
+</li>
+<li>
+<a href='https://www.linkedin.com/company/crowdrabbit' target='new'>
+<div class='fa fa-linkedin' style='line-height: 40px;'></div>
+</a>
+</li>
+<li>
+<a href='https://plus.google.com/u/0/102311087292577974874' target='new'>
+<div class='fa fa-google-plus' style='line-height: 40px;'></div>
+</a>
+</li>
+</ul>
+</div>
+<div class='medium-4 column'>
+<ul class='inline-list quicklinks' style='font-size: 12px;'>
+<li>
+<a href="/privacy">Privacy Policy</a>
+</li>
+<li>
+<a href="/terms">Terms of Use</a>
+</li>
+<li>
+<a href="/contact">Contact Us</a>
+</li>
+</ul>
+</div>
+</div>
+<div class='row text-small-print'>
+Important Disclosure: crowdrabbit.com is a website operated by CrowdRabbit, LLC (ÅgCrowdrabbitÅh). The information presented on this website is not an offer to sell, or a solicitation of an offer to buy, any securities of offerings listed or described herein. Crowdrabbit is not a registered broker-dealer or investment advisor and does not perform any broker dealer or investment advisory services or activities. By accessing this website and any pages on this site, you have agreed to be bound by CrowdrabbitÅfs Terms of Use and Privacy Policy. Crowdrabbit does not provide investment, legal or tax advice. No communication, through this website or in any other medium, should be construed as a recommendation by Crowdrabbit of any securities offering on or off this investment platform. The information provided on crowdrabbit.com, which may be linked to, is furnished by independent third parties who are not controlled by, or the responsibility of, Crowdrabbit or any of its affiliates. Neither Crowdrabbit nor any of its affiliates take responsibility for the accuracy or completeness of such information. Any information contained herein should not be used as a basis for making any investment decision. To the fullest extent permissible by law, neither Crowdrabbit nor any of its directors, officers, employees, representatives, affiliates or agents shall have any liability whatsoever arising out of any error or incompleteness of fact or opinion, or lack of care in, in the presentation or publication of the materials and communication herein.
+</div>
+<div class='row text-center'>
+<p>
+</p>
+</div>
+</div>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="//crowdrabbit-assets.s3.amazonaws.com/assets/ie8/rem.min-56d0ba8b1d318896f03ed723a08fcb46.js"></script>
+<script src="//crowdrabbit-assets.s3.amazonaws.com/assets/ie8/excanvas-223190adc20f9e5baff587b377c7fd67.js"></script>
+<![endif]-->
+</body>
+</html>
+<script>
+  $(document).foundation();
+</script>
