@@ -28,10 +28,10 @@ def detail_page(url,plugin,pagetype):
 	urllib.urlretrieve (url, "html.html")
 	ret = ''
 	#make the data storage class
-	if plugin['list_type'] == 'Project':
-		ret = Project_Scrap()
-	else:
-		ret = Investor_Scrap()
+	#if plugin['list_type'] == 'Project':
+	ret = Project_Scrap()
+	#else:
+	#	ret = Investor_Scrap()
 	
 	#Scraper itself
 	for p in plugin['details']:
@@ -80,8 +80,7 @@ def detail_page(url,plugin,pagetype):
 			
 			
 			#sets the scrap variable named specified in the plugin to the output.
-			exec('ret.' + p['name'] + ' = output')
-			
+			eval('ret.' + p['name'] + ' = output') 
 		#block read in type
 		elif p['type'] == 'block':
 			while f.readline() != p['start']+'\n':
@@ -118,7 +117,7 @@ def detail_page(url,plugin,pagetype):
 			for x in range(1, len(scanned)):
 				if scanned[x] in p['translations']:
 					var = p['translations'][scanned[x]]
-					exec('ret.' + var + ' = ' + repr(scanned[x-1]))
+					eval('ret.' + var + ' = ' + repr(scanned[x-1]))
 		f.close()
 	return ret			
 					
@@ -141,7 +140,7 @@ def detail_page(url,plugin,pagetype):
 		
 		while 1:
 			line = f.readline()
-			if line == '<div class="project">':
+			if line == plugin['project_start']:
 				line = f.readline()
 				line = line.split(' ')
 				for o in line:
@@ -153,11 +152,11 @@ def detail_page(url,plugin,pagetype):
 		f.close()
 		
 	def send_scrap(scrap, plugin):
-		#db=MySQLdb.connect('softengine.cyjkgej2ippd.us-east-1.rds.amazonaws.com:3306','CrowdFund','12345678')
-		db=MySQLdb.connect(plugin['address'],plugin['user'],plugin['pass'])
-		c=db.cursor()
-		c.execute(scrap.insert_Command())
+		print scrap
+		#db=MySQLdb.connect('host='+plugin['address']+',user='+plugin['user']+',pass='+plugin['pass']+',db='+plugin['db'])
+		#c=db.cursor()
+		#c.execute(scrap.insert_Command())
 	
-	if __name__ == '__main__':
-		for p in plugins:
-			list_page(p)
+##	if __name__ == '__main__':
+##		for p in plugins:
+##			list_page(p)

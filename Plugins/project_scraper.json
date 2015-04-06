@@ -1,0 +1,55 @@
+{
+	"details": [
+		{
+			"type": "line",
+			"name": "name",
+			"skip": "<div class='medium-7 large-8 column'>",
+			"start": "<h1>",
+			"end": "</h1>"
+		},
+		{
+			"type": "line",
+			"name": "catagories",
+			"skip": "<span class='stat-label'>Category:</span>",
+			"start": "<span>",
+			"end": "</span>"
+		},
+		{
+			"type": "line",
+			"name": "source_site",
+			"skip": "<span class='stat-label'>Portal:</span>",
+			"start": "<span>",
+			"end": "</span>"	
+		},
+		{
+			"type": "line",
+			"name": "source",
+			"skip": "<div class='fb-share-button' data-href='https://",
+			"start": "<div class='small-12 medium-8 column text-right'>",
+			"end": "View this project"	
+		},
+		{
+			"type": "line",
+			"name": "company_logo",
+			"skip": "<div class='funding-type'>",
+			"start": "</div> \n </div> \n </div> \n",
+			"end": "</div>"	
+		},
+		{
+			"type": "block",
+			"name": "statistics",
+			"start": "<div class='small-4 column'>",
+			"end": "<hr class='visible-small'>",
+			"translations": {
+				"Amount Raised": "current_funding",
+				"Funding Goal": "target_funding",
+				"Minimum Investment": "min_invest",
+				"End Date": "end_date",
+				"Backers": "backer_count"
+			},
+			"start_tags": ["<div class='stat'>","<div class='details'>"],
+			"end_tags": ["</div>"]
+		}
+	]
+
+}
