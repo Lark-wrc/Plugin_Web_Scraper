@@ -6,6 +6,7 @@ import sys
 import os
 import urllib
 import MySQLdb
+from pprint import pprint
 from time import sleep
 
 plugin_dir = './Plugins'
@@ -23,15 +24,15 @@ for f in files:
 		plugins.append(json.loads(plug.read()))
 	
 
-def detail_page(url,plugin,pagetype):
+def detail_page(url,plugin):
 	#Download the HTML for the page in question.
 	urllib.urlretrieve (url, "html.html")
 	ret = ''
 	#make the data storage class
-	#if plugin['list_type'] == 'Project':
-	ret = Project_Scrap()
-	#else:
-	#	ret = Investor_Scrap()
+	if plugin['type'] == 'Project':
+		ret = Project_Scrap()
+	else:
+		ret = Investor_Scrap()
 	
 	#Scraper itself
 	for p in plugin['details']:
@@ -44,21 +45,17 @@ def detail_page(url,plugin,pagetype):
 			if p['skip'] != '':
 				while f.readline() != p['skip']+'\n':
 					pass
-			
-			
 			#readlines until the tag starting the information we need is read.
 			while f.readline() != p['start']+'\n':
 				pass
-			
 			
 			#add any lines in between the start line just read and the close
 			#tag to the output string.
 			while 1:
 				x = f.readline()
-				output = output + x
 				if x == p['end']+'\n':
 					break
-			
+				output = output + x
 			
 			#removes all dollar signs from the output.
 			output = output.replace("$", "")
@@ -69,18 +66,18 @@ def detail_page(url,plugin,pagetype):
 				out = output.split(' ')
 				for o in out:
 					if o[0:4] == 'href':
-						output = o[4:-1]
+						output = o[6:-1]
 			if 'src' in output:
 				out = output.split(' ')
 				for o in out:
 					if o[0:3] == 'src':
-						output = o[3:-1]	
+						output = o[7:-1]        
 			if output.isdigit():
 				output = int(output)
 			
-			
+			cat = p['name']
 			#sets the scrap variable named specified in the plugin to the output.
-			eval('ret.' + p['name'] + ' = output') 
+			exec('ret.' + cat + ' = output') in locals()
 		#block read in type
 		elif p['type'] == 'block':
 			while f.readline() != p['start']+'\n':
@@ -92,10 +89,8 @@ def detail_page(url,plugin,pagetype):
 			scanned = []
 			flag = False
 			output = ''
-			print p['start_tags']
 			while 1:
 				x = f.readline()
-				print x[:-1], flag
 				if x == p['end']+'\n':
 					break
 				elif x[:-1] in p['start_tags'] and flag == False:
@@ -112,51 +107,56 @@ def detail_page(url,plugin,pagetype):
 					pass
 				else:
 					print 'Something dun fucked up'
-			print scanned
-                        #Look at the scanned data, and store it appropriately. 
+			#Look at the scanned data, and store it appropriately. 
 			for x in range(1, len(scanned)):
 				if scanned[x] in p['translations']:
 					var = p['translations'][scanned[x]]
-					eval('ret.' + var + ' = ' + repr(scanned[x-1]))
+					exec('ret.' + var + ' = ' + repr(scanned[x-1])) in locals()
 		f.close()
-	return ret			
+	return ret                      
 					
-	def list_page(plugin):
-		#loadButton = "//div[contains(@class, 'warning') and contains(@class, 'btn-warning') and contains(@class, 'button')]"
-		loadButton = plugin['loader']
-		driver = webdriver.Firefox()
-		driver.get(plugin['list_page'])
-		
-		try:
-			while 1:
-				duck.find_element_by_xpath(loadButton).click()
-				sleep(2)
-		except:
-			pass
-		f = open('list.html','w')
-		f.write(driver.page_source.encode('ascii','ignore'))
-		f.close()
-		f = open('list.html', 'r')
-		
-		while 1:
-			line = f.readline()
-			if line == plugin['project_start']:
-				line = f.readline()
-				line = line.split(' ')
-				for o in line:
-					if o[0:8] == 'ng-href="':
-						line = o[8:-1]
-						break
-				ret = detail_page("crowdrabbit.com/"+line,plugin)
-				send_scrap(ret,plugin)
-		f.close()
-		
-	def send_scrap(scrap, plugin):
-		print scrap
-		#db=MySQLdb.connect('host='+plugin['address']+',user='+plugin['user']+',pass='+plugin['pass']+',db='+plugin['db'])
-		#c=db.cursor()
-		#c.execute(scrap.insert_Command())
-	
-##	if __name__ == '__main__':
-##		for p in plugins:
-##			list_page(p)
+def mega_list_page(plugin):
+        loadButton = "//div[contains(@class, 'warning') and contains(@class, 'btn-warning') and contains(@class, 'button')]"
+        #loadButton = plugin['loader']
+        driver = webdriver.Firefox()
+        driver.get(plugin['list_page'])
+        sleep(3)
+        try:
+                while 1:
+                        driver.find_element_by_xpath(loadButton).click()
+                        sleep(2)
+        except:
+                pass
+        f = open('list.html','w')
+        f.write(driver.page_source.encode('ascii','ignore'))
+        f.close()
+        driver.quit()
+        f = open('list.html', 'r')
+        flag = False
+        for line in f:
+                if flag:
+                        flag = False
+                        split = line.split(' ')
+                        second = ''
+                        for o in split:
+                                if o[0:9] == 'ng-href="':
+                                        second = o[9:-1]
+                                        break
+                        cat = 'http://crowdrabbit.com/'+''.join(second)+'.html'
+                        print cat
+                        ret = detail_page(cat,plugin)
+                        send_scrap(ret,plugin)
+                if line == plugin['project_start']+'\n':
+                        flag = True
+        f.close()
+        
+def send_scrap(scrap, plugin):
+        pprint (vars(scrap))
+        #db=MySQLdb.connect('host='+plugin['address']+',user='+plugin['user']+',pass='+plugin['pass']+',db='+plugin['db'])
+        #c=db.cursor()
+        #c.execute(scrap.insert_Command())
+
+if __name__ == '__main__':
+        for p in plugins:
+                if p['list_type'] == 'mega':
+                        mega_list_page(p)

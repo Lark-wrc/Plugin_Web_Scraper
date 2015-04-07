@@ -1,4 +1,18 @@
 {
+    "list_page": "https://www.crowdrabbit.com/search?type=Equity",
+
+    "loader": "//div[contains(@class, 'warning') and contains(@class, 'btn-warning') and contains(@class, 'button')]",
+
+	"project_start" : "<div class=\"project\">",
+	
+	"user" : "CrowdFund",
+	"pass" : "12345678",
+	"address" : "",
+	"port" : "",
+	
+	"type" : "Project",
+	"list_type" : "mega",
+
 	"details": [
 		{
 			"type": "line",
@@ -24,7 +38,7 @@
 		{
 			"type": "line",
 			"name": "source",
-			"skip": "<div class='fb-share-button' data-href='https://",
+			"skip": "<ul class='button-group'>",
 			"start": "<div class='small-12 medium-8 column text-right'>",
 			"end": "View this project"	
 		},
@@ -32,7 +46,7 @@
 			"type": "line",
 			"name": "company_logo",
 			"skip": "<div class='funding-type'>",
-			"start": "</div> \n </div> \n </div> \n",
+			"start": "Equity",
 			"end": "</div>"	
 		},
 		{
