@@ -4,7 +4,7 @@
     "loader": "//div[contains(@class, 'warning') and contains(@class, 'btn-warning') and contains(@class, 'button')]",
 
 	"project_start" : "<div class=\"project\">",
-	"project_prepend" : "http://crowdrabbit.com/"
+	"project_prepend" : "http://crowdrabbit.com/",
 	
 	"user" : "CrowdFundUser",
 	"pass" : "12345678",
@@ -50,8 +50,8 @@
 			"start": "class=\"img-responsive\"",
 			"regex": "src=\".*\"",
 			"index": 0,
-			"cut_start" : 5,
-			"cut_end" : -1
+			"cut_start" : 7,
+			"cut_end" : -13
 		},
 		{
 			"type": "block",

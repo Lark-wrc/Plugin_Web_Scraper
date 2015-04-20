@@ -51,17 +51,20 @@ def detail_page(url,plugin):
                         output = ''
                         #skip to the the line specified if it exists.
                         if p['skip'] != '':
-                                while f.readline() != p['skip']+'\n':
+                                x = 'start'
+                                while x != p['skip']+'\n':
                                         if x == '':
                                                 failureTicker+=1
                                                 if failureTicker > 50:
                                                         break
+                                        x = f.readline()
                         #readlines until the tag starting the information we need is read.
-                        while f.readline() != p['start']+'\n':
-                                if x == '':
+                                x = 'start'
+                                while x != p['start']+'\n':
                                         failureTicker+=1
                                         if failureTicker > 50:
                                                 break
+                                        x = f.readline()
                         
                         #add any lines in between the start line just read and the close
                         #tag to the output string.
@@ -101,12 +104,14 @@ def detail_page(url,plugin):
 
                 #block read in type. Crowdrabbit only
                 elif p['type'] == 'block':
-                        while f.readline() != p['start']+'\n':
+                        x = 'start'
+                        while x != p['start']+'\n':
                                 if x == '':
                                         failureTicker+=1
                                         if failureTicker > 50:
                                                 break
-                        
+                                x = f.readline()
+                                        
                         #read every line between a start and end tag. each line is checked for a start or
                         #end tag, depending on the last one seen. in between them is stored in an array,
                         #outside is not. This is done until the block end tag is found.
@@ -202,7 +207,6 @@ def mega_list_page(plugin):
         """Iterates through a plugin's list page, or page with all the detail pages on it
         and gets the scraps from detail_page. It then sends those scraps to the specificed location.
         """
-        #loadButton = "//div[contains(@class, 'warning') and contains(@class, 'btn-warning') and contains(@class, 'button')]"
         loadButton = plugin['loader']
         driver = webdriver.Firefox()
         driver.get(plugin['list_page'])
@@ -246,7 +250,14 @@ def send_scrap(scrap, plugin):
         pprint (vars(scrap))
         db=MySQLdb.connect(host=plugin['address'], user=plugin['user'], passwd=plugin['pass'], db=plugin['db'])
         c=db.cursor()
-        c.execute(scrap.insert_Command())
+        if test: print scrap.insert_Command()
+
+        exists = c.execute("SELECT * FROM {0} WHERE EXISTS (SELECT name FROM {0} WHERE name = '{1}');".format(plugin['type'], scrap.name))
+        if exists:
+                c.execute("DELETE FROM {0} WHERE name = '{1}'".format(plugin['type'], scrap.name))
+                c.execute(scrap.insert_Command())
+        else:
+                c.execute(scrap.insert_Command())
         db.commit()
 
 #Runs the code.
