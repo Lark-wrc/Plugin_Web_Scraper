@@ -1,4 +1,20 @@
 {
+    "list_page": "https://www.crowdrabbit.com/search?type=Equity",
+
+    "loader": "//div[contains(@class, 'warning') and contains(@class, 'btn-warning') and contains(@class, 'button')]",
+
+	"project_start" : "<div class=\"project\">",
+	"project_prepend" : "http://crowdrabbit.com/"
+	
+	"user" : "CrowdFundUser",
+	"pass" : "12345678",
+	"address" : "crowdfund.c0xjytogn3na.us-east-1.rds.amazonaws.com",
+	"port" : "3306",
+	"db" : "CrowdFund",
+	
+	"type" : "Project",
+	"list_type" : "mega",
+
 	"details": [
 		{
 			"type": "line",
@@ -20,6 +36,22 @@
 			"skip": "<span class='stat-label'>Portal:</span>",
 			"start": "<span>",
 			"end": "</span>"	
+		},
+		{
+			"type": "line",
+			"name": "source",
+			"skip": "<ul class='button-group'>",
+			"start": "<div class='small-12 medium-8 column text-right'>",
+			"end": "View this project"	
+		},
+		{
+			"type": "single_line",
+			"name": "company_logo",
+			"start": "class=\"img-responsive\"",
+			"regex": "src=\".*\"",
+			"index": 0,
+			"cut_start" : 5,
+			"cut_end" : -1
 		},
 		{
 			"type": "block",

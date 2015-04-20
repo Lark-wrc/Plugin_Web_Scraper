@@ -50,11 +50,11 @@ class Investor_Scrap(object):
 		else:
 			return True
 	def insert_Command(self):
-		return """INSERT INTO PROJECT(NAME,
-        LOCATION, INVESTMENTS, AVERAGE_INVESTED, PROFESSION, TARGET_MARKET, 
-	TARGET_LOCATION,COMPANY_TITLE, SOURCE_URL, SOURCE_SITE)
-        VALUES ('{}', '{}', '{}', {}, '{}', '{}', '{}', '{}', 
-	'{}', '{}'')""".format(self.name, self.location, self.investments,
-                self.average_invested, self.profession, self.target_market,
+		return """INSERT into
+		Investor(name, location, investments, average_invested, profession, 
+		target_market, target_location, company_title, source_url, source_site)
+        VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', 
+		'{}', '{}'')""".format(self.name, self.location, self.investments,
+                repr(self.average_invested), self.profession, self.target_market,
                 self.target_location, self.company_title,
                 self.source_url, self.source_site)

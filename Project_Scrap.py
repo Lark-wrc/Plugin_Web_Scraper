@@ -50,12 +50,18 @@ class Project_Scrap(object):
 		else:
 			return True
 	def insert_Command(self):
-		return """INSERT INTO PROJECT(NAME,
-        CURRENT_FUNDING, TARGET_FUNDING, CATAGORIES,
-	MIN_INVEST, END_DATE, BACKER_COUNT,COMPANY_LOGO,
-	ITEM_IMAGE, SOURCE, SOURCE_SITE)
-        VALUES ('{}', {}, {}, '{}', {}, {}, '{}', {}, 
-	'{}', '{}', '{}', '{}', '{}')""".format(self.name, self.current_funding,
-		self.target_funding, self.catagories, self.min_invest,
+		if not isinstance(self.target_funding, ( int, long )):
+			self.target_funding = int(self.target_funding.replace(",", ""))
+		if not isinstance(self.current_funding, ( int, long )):
+			self.current_funding = int(self.current_funding.replace(",", ""))
+		if not isinstance(self.min_invest, ( int, long )):
+			self.min_invest = int(self.min_invest.replace(",", ""))
+		if not isinstance(self.backer_count, ( int, long )):
+			self.backer_count = int(self.backer_count.replace(",", ""))
+		return """INSERT INTO Project(name, current_funding, target_funding, 
+		categories, min_invest, end_date, backer_count, company_logo, source, source_site) 
+		VALUES ('{}', {}, {}, '{}', {}, '{}', {}, '{}', '{}', '{}')""".format(self.name,
+				self.current_funding,
+				self.target_funding, self.catagories, self.min_invest,
                 self.end_date, self.backer_count, self.company_logo,
-                self.item_image, self.source, self.source_site)
+                self.source, self.source_site)
